@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameMenu : MonoBehaviour {
     GameManager gamemanager;
@@ -52,5 +53,13 @@ public class GameMenu : MonoBehaviour {
 
     public void doResetPieces() {
         gamemanager.resetPieces();
+    }
+
+    public void doNextLevel() {
+        gamemanager.nextLevel();
+    }
+
+    public void doReturnToTitle() {
+        SceneManager.LoadScene("title");
     }
 }

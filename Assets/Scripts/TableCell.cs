@@ -34,8 +34,10 @@ public class TableCell : MonoBehaviour {
     }
 
     private void OnMouseOver() {
-        isHighlighted = true;
-        gamemanager.showPreviewPiece(true, iRow, iCol);
+        if (gamemanager != null) {
+            isHighlighted = true;
+            gamemanager.showPreviewPiece(true, iRow, iCol);
+        }
     }
 
     private void OnMouseExit() {

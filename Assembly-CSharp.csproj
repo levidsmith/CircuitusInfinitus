@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{8DA5A2DF-D082-0B8E-5D5A-A667D4090AE3}</ProjectGuid>
+    <ProjectGuid>{3FB34CD1-ED4E-3CFF-4E3B-E8D97EDC8C32}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -55,17 +55,19 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\GameManager.cs" />
-    <Compile Include="Assets\Scripts\TableCell.cs" />
     <Compile Include="Assets\Scripts\Piece.cs" />
-    <Compile Include="Assets\Scripts\PieceBallGenerator.cs" />
-    <Compile Include="Assets\Scripts\Ball.cs" />
     <Compile Include="Assets\Scripts\GameMenu.cs" />
-    <Compile Include="Assets\Scripts\PieceBridge.cs" />
-    <Compile Include="Assets\Scripts\PieceBridgeTurn.cs" />
     <Compile Include="Assets\Scripts\ZipArea.cs" />
-    <Compile Include="Assets\Scripts\PieceZip.cs" />
     <Compile Include="Assets\Scripts\LoopArea.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\PieceBridge.cs" />
+    <Compile Include="Assets\Scripts\Ball.cs" />
+    <Compile Include="Assets\Scripts\TableCell.cs" />
+    <Compile Include="Assets\Scripts\PieceZip.cs" />
+    <Compile Include="Assets\Scripts\PieceBallGenerator.cs" />
+    <Compile Include="Assets\Scripts\PieceBridgeTurn.cs" />
+    <Compile Include="Assets\Scripts\InputManager.cs" />
+    <Compile Include="Assets\Scripts\TitleMenu.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
