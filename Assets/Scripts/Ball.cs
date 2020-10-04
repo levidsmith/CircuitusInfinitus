@@ -8,6 +8,13 @@ public class Ball : MonoBehaviour {
         
     }
 
+    public void setBallTexture(Material mat) {
+        Renderer renderer = transform.GetComponentInChildren<Renderer>();
+        renderer.material = mat;
+
+
+    }
+
     void Update() {
         
     }

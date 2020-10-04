@@ -58,8 +58,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5263948c1727b4d418b94a3b1c6142b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFilled: 0
   matHighlight: {fileID: 2100000, guid: 7c782e1552d4d5845a1e1365d8e5af83, type: 2}
   matRegular: {fileID: 2100000, guid: a5c00722f97d0c04da0e8e702c73787f, type: 2}
+  iRow: 0
+  iCol: 0
 --- !u!1001 &374943951927014144
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -111,6 +114,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: ed29049ebbb505b4583d03d12eb31c31, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a5c00722f97d0c04da0e8e702c73787f, type: 2}
     - target: {fileID: 919132149155446097, guid: ed29049ebbb505b4583d03d12eb31c31, type: 3}
       propertyPath: m_Name
       value: table_cell

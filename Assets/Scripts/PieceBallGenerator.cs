@@ -14,7 +14,8 @@ public class PieceBallGenerator : Piece {
 
     void Start() {
         fBallGenerateCountdown = GENERATE_COUNTDOWN_MAX;
-        iBallsLeft = MAX_BALLS;
+        //iBallsLeft = MAX_BALLS;
+        iBallsLeft = 0;
         
     }
 
@@ -25,6 +26,10 @@ public class PieceBallGenerator : Piece {
         fBallGenerateCountdown -= Time.deltaTime;
         if ((fBallGenerateCountdown <= 0f) && (iBallsLeft > 0)) {
             Ball ball = Instantiate(BallPrefab, new Vector3(transform.position.x, 1.4f, transform.position.z), Quaternion.identity);
+
+            //ball.setBallTexture(gamemanager.matBalls[Random.Range(0, 15)]);
+            ball.setBallTexture(gamemanager.matBalls[gamemanager.getBallNumber()]);
+
             //ball.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 0f, 10f));
             ball.transform.SetParent(gamemanager.Balls.transform);
 //            ball.GetComponent<Rigidbody>().AddForce(transform.forward * 50f);
@@ -36,8 +41,8 @@ public class PieceBallGenerator : Piece {
         
     }
 
-    public void reset() {
+    public void spawnBalls() {
         iBallsLeft = MAX_BALLS;
-        fBallGenerateCountdown = GENERATE_COUNTDOWN_MAX;
+        fBallGenerateCountdown = 0;
     }
 }

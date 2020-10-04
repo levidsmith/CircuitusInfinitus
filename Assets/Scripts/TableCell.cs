@@ -47,8 +47,10 @@ public class TableCell : MonoBehaviour {
 
     private void OnMouseDown() {
         if (!isFilled) {
-            isFilled = true;
-            gamemanager.createPiece(iRow, iCol);
+            
+            if (gamemanager.createPiece(iRow, iCol)) {
+                isFilled = true;
+            }
         }
         
     }

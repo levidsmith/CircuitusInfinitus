@@ -31,6 +31,9 @@ public class GameManager : MonoBehaviour {
     public Text TextBridgeTurnCount;
     public Text TextZipCount;
 
+    public List<Material> matBalls;
+    public List<int> listBallNumbers;
+
     int iLoops;
     int iLoopsRequired;
     bool isCompleted;
@@ -45,6 +48,7 @@ public class GameManager : MonoBehaviour {
         iSelectedRotation = 0;
         iCurrentLevel = 0;
         dictPieceCount = new Dictionary<string, int>();
+        listBallNumbers = new List<int>();
         makeTable();
 
         resetLevel();
@@ -112,8 +116,10 @@ public class GameManager : MonoBehaviour {
 
     }
 
-    public void createPiece(int iRow, int iCol) {
+    public bool createPiece(int iRow, int iCol) {
+        bool isPieceCreated;
         float fRotation = iSelectedRotation * 90f;
+        isPieceCreated = false;
 
         switch(iSelectedPiece) {
             case 0:
@@ -121,6 +127,7 @@ public class GameManager : MonoBehaviour {
                     PieceBallGenerator ballgenerator = Instantiate(PieceBallGeneratorPrefab, new Vector3((float)iCol, 0f, (float)iRow), Quaternion.Euler(0f, fRotation, 0f)).GetComponent<PieceBallGenerator>();
                     ballgenerator.transform.SetParent(CreatedPieces.transform);
                     dictPieceCount["ballgenerator"]--;
+                    isPieceCreated = true;
                 }
                 break;
             case 1:
@@ -128,6 +135,7 @@ public class GameManager : MonoBehaviour {
                     PieceBridge bridge = Instantiate(PieceBridgePrefab, new Vector3((float)iCol, 0f, (float)iRow), Quaternion.Euler(0f, fRotation, 0f)).GetComponent<PieceBridge>();
                     bridge.transform.SetParent(CreatedPieces.transform);
                     dictPieceCount["bridge"]--;
+                    isPieceCreated = true;
                 }
                 break;
             case 2:
@@ -135,6 +143,7 @@ public class GameManager : MonoBehaviour {
                     PieceBridgeTurn bridgeturn = Instantiate(PieceBridgeTurnPrefab, new Vector3((float)iCol, 0f, (float)iRow), Quaternion.Euler(0f, fRotation, 0f)).GetComponent<PieceBridgeTurn>();
                     bridgeturn.transform.SetParent(CreatedPieces.transform);
                     dictPieceCount["bridgeturn"]--;
+                    isPieceCreated = true;
                 }
                 break;
             case 3:
@@ -142,11 +151,13 @@ public class GameManager : MonoBehaviour {
                     PieceZip zip = Instantiate(PieceZipPrefab, new Vector3((float)iCol, 0f, (float)iRow), Quaternion.Euler(0f, fRotation, 0f)).GetComponent<PieceZip>();
                     zip.transform.SetParent(CreatedPieces.transform);
                     dictPieceCount["zip"]--;
+                    isPieceCreated = true;
                 }
                 break;
 
         }
         updateUIDisplay();
+        return isPieceCreated;
     }
 
     public void setSelectedPiece(int iPiece) {
@@ -202,7 +213,7 @@ public class GameManager : MonoBehaviour {
         }
 
         foreach (PieceBallGenerator ballgenerator in GameObject.FindObjectsOfType<PieceBallGenerator>()) {
-            ballgenerator.reset();
+            ballgenerator.spawnBalls();
         }
 
         iLoops = 0;
@@ -260,6 +271,23 @@ public class GameManager : MonoBehaviour {
 
     public void pauseGame() {
         SceneManager.LoadScene("title");
+    }
+
+    public int getBallNumber() {
+        int iBallNumber = 0;
+
+        if (listBallNumbers.Count <= 0) {
+            int i;
+            for (i = 0; i < 15; i++) {
+                listBallNumbers.Add(i);
+            }
+        }
+
+        int iIndex = Random.Range(0, listBallNumbers.Count);
+        iBallNumber = listBallNumbers[iIndex];
+        listBallNumbers.RemoveAt(iIndex);
+
+        return iBallNumber;
     }
 
 
