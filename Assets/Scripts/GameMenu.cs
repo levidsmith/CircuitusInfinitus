@@ -53,6 +53,7 @@ public class GameMenu : MonoBehaviour {
 
     public void doResetPieces() {
         gamemanager.resetPieces();
+        gamemanager.soundeffects.soundNegative.Play();
     }
 
     public void doNextLevel() {

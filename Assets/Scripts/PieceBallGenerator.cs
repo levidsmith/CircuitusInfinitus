@@ -36,6 +36,7 @@ public class PieceBallGenerator : Piece {
 
             iBallsLeft--;
             fBallGenerateCountdown += GENERATE_COUNTDOWN_MAX;
+            gamemanager.soundeffects.soundBallGenerate.Play();
         }
 
         

@@ -4,11 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ZipArea : MonoBehaviour {
+    GameManager gamemanager;
     void Start() {
         
     }
 
     void Update() {
+        if (gamemanager == null) {
+            gamemanager = GameObject.FindObjectOfType<GameManager>();
+        }
         
     }
 
@@ -17,6 +21,7 @@ public class ZipArea : MonoBehaviour {
         if (b != null) {
             Rigidbody rigidbody = b.GetComponent<Rigidbody>();
             rigidbody.AddForce(transform.forward * 20f);
+            gamemanager.soundeffects.soundZip.Play();
         }
     }
 }

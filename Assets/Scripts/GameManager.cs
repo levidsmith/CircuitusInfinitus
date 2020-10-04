@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour {
     const int NUM_LEVELS = 3;
 
     Dictionary <string, int> dictPieceCount;
+    public SoundEffects soundeffects;
     
 
     void Start() {
@@ -50,6 +51,7 @@ public class GameManager : MonoBehaviour {
         dictPieceCount = new Dictionary<string, int>();
         listBallNumbers = new List<int>();
         makeTable();
+        setSelectedPiece(0);
 
         resetLevel();
 
@@ -156,12 +158,19 @@ public class GameManager : MonoBehaviour {
                 break;
 
         }
+
+        if (isPieceCreated) {
+            soundeffects.soundCreatePiece.Play();
+        } else {
+            soundeffects.soundNegative.Play();
+        }
+
         updateUIDisplay();
         return isPieceCreated;
     }
 
     public void setSelectedPiece(int iPiece) {
-        string strDisplay = "Selected Piece: ";
+        string strDisplay = "Selected Piece:\n";
         switch (iPiece) {
             case 0:
                 iSelectedPiece = iPiece;
@@ -180,8 +189,9 @@ public class GameManager : MonoBehaviour {
                 strDisplay += "Zip";
                 break;
         }
-
+        
         TextSelectedPiece.text = strDisplay;
+        soundeffects.soundClick.Play();
     }
 
     public void incrementRotation() {
@@ -190,6 +200,7 @@ public class GameManager : MonoBehaviour {
             iSelectedRotation = iSelectedRotation % 4;
         }
         TextSelectedRotation.text = "Rotation " + (iSelectedRotation * 90);
+        soundeffects.soundRotate.Play();
     }
 
     public void showPreviewPiece(bool isShowing, int iRow, int iCol) {
@@ -236,6 +247,7 @@ public class GameManager : MonoBehaviour {
 
     public void incrementLoops() {
         iLoops++;
+        soundeffects.soundLoop.Play();
         updateUIDisplay();
     }
 
